@@ -18,10 +18,8 @@ def index(request):
             for city in cities:
                 res = requests.get(api_url.format(city)).json()
                 city_info = {
-                    'city' : city.name,
-                        'temp_min' : res["main"]["temp_min"],
-                        'temp_now' : res["main"]["temp"],
-                        'temp_max' : res["main"]["temp_max"],
+                    'city' : city.name,   
+                        'temp_now' : res["main"]["feels_like"],
                         'icon' : res ["weather"][0]["icon"],
                         'pressure' : res ["main"]["pressure"],
                         'description' : res ["weather"][0]["description"],
