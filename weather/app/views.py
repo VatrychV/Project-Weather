@@ -25,13 +25,13 @@ def index(request):
                         'description' : res ["weather"][0]["description"],
                         'wind_speed' : res['wind']['speed'],
                 }
-                all_cities.append(city_info)    
-    except Exception:
-            print('ошибка ключа')
-            while True:
-                cities = City.objects.all().delete()  
-                return render (request,'index.html')    
-    finally:            
-                context = {'all_info': all_cities, 'form': form}
-                return render(request, 'index.html', context)
+                all_cities.append(city_info)
+                   
+    finally: 
+            cities = City.objects.all().delete()           
+            context = {'all_info': all_cities, 'form': form}
+            return render(request, 'index.html', context)
+
+             
+
             
